@@ -5,7 +5,6 @@ import torch
 
 from modules import script_callbacks, sd_unet, devices, shared, paths_internal
 
-import trt_paths
 import ui_trt
 
 import pycuda.driver as cuda

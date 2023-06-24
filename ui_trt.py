@@ -2,7 +2,6 @@ import html
 import os
 
 import launch
-import trt_paths
 from modules import script_callbacks, paths_internal, shared
 import gradio as gr
 
@@ -35,22 +34,11 @@ def get_trt_command(filename, onnx_filename, *args):
     filename = get_trt_filename(filename, onnx_filename)
     command = export_trt.get_trt_command(filename, onnx_filename, *args)
 
-    env_command = f"""
-    set PATH=%PATH%;{trt_paths.cuda_path}\\lib
-    set PATH=%PATH%;{trt_paths.trt_path}\\lib
-    """
-
     run_command = f"""
     {command}
     """
 
     return "Command generated", f"""
-<p>
-Environment variables: <br>
-<pre style="white-space: pre-line;">
-{html.escape(env_command)}
-</pre>
-</p>
 <p>
 Command: <br>
 <pre style="white-space: pre-line;">

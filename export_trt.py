@@ -10,10 +10,8 @@ def get_trt_command(trt_filename, onnx_filename, min_bs, max_bs, min_token_count
 
     assert os.path.isfile(onnx_filename), 'onnx model not found: ' + onnx_filename
 
-    import trt_paths
     trt_exec_candidates = [
-        os.path.join(trt_paths.trt_path, "bin", "trtexec"),
-        os.path.join(trt_paths.trt_path, "bin", "trtexec.exe"),
+        "/usr/src/tensorrt/bin/trtexec",
     ]
 
     trt_exec = next(iter([x for x in trt_exec_candidates if os.path.isfile(x)]), None)
